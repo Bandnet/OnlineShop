@@ -1,0 +1,170 @@
+/* ===== FOOTER NEON GREEN / BLACK ===== */
+
+:root {
+    --neon-green: #39ff14;
+    --neon-green-dim: #00cc44;
+    --neon-green-dark: #006622;
+    --black: #000000;
+    --black-surface: #0a0a0a;
+    --black-card: #111111;
+    --black-border: #1a1a1a;
+    --text-muted: #888888;
+}
+
+/* ===== FOOTER WRAPPER ===== */
+.footer {
+    background-color: var(--black);
+    border-top: 2px solid var(--neon-green);
+    color: var(--neon-green);
+    font-family: 'Courier New', Courier, monospace;
+    padding: 48px 40px 24px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    box-shadow: 0 -4px 30px rgba(57, 255, 20, 0.12);
+}
+
+/* ===== FOOTER SECTIONS ===== */
+.infos,
+.oeffnungszeiten {
+    background-color: var(--black-card);
+    border: 1px solid var(--neon-green-dark);
+    border-radius: 4px;
+    padding: 28px;
+}
+
+/* ===== HEADINGS ===== */
+.footer h2 {
+    color: var(--neon-green);
+    font-size: 1.4rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    margin: 0 0 16px 0;
+    border-bottom: 1px solid var(--neon-green-dark);
+    padding-bottom: 12px;
+}
+
+.footer h3 {
+    color: var(--neon-green-dim);
+    font-size: 1rem;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    margin: 16px 0 8px 0;
+    text-transform: uppercase;
+}
+
+.footer p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    line-height: 1.7;
+    margin: 4px 0;
+}
+
+/* ===== ÖFFNUNGSZEITEN TABELLE ===== */
+.oeffnungszeiten-tabelle {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.88rem;
+    margin-top: 8px;
+}
+
+.oeffnungszeiten-tabelle th {
+    color: var(--neon-green);
+    text-align: left;
+    padding: 8px 12px;
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--neon-green-dark);
+    font-weight: 700;
+}
+
+.oeffnungszeiten-tabelle td {
+    padding: 8px 12px;
+    color: var(--text-muted);
+    border-bottom: 1px solid var(--black-border);
+    transition: color 0.2s;
+}
+
+.oeffnungszeiten-tabelle tr:last-child td {
+    border-bottom: none;
+}
+
+.oeffnungszeiten-tabelle tr:hover td {
+    color: var(--neon-green);
+    background-color: rgba(57, 255, 20, 0.04);
+}
+
+/* Tag-Spalte */
+.oeffnungszeiten-tabelle td:first-child {
+    color: var(--neon-green-dim);
+    font-weight: 600;
+    letter-spacing: 0.05em;
+}
+
+/* Geschlossen-Zeile */
+.oeffnungszeiten-tabelle tr.geschlossen td {
+    color: #444444;
+}
+.oeffnungszeiten-tabelle tr.geschlossen td:first-child {
+    color: #555555;
+}
+
+/* Heute hervorheben */
+.oeffnungszeiten-tabelle tr.heute td {
+    color: var(--neon-green);
+}
+.oeffnungszeiten-tabelle tr.heute td:first-child {
+    color: var(--neon-green);
+    font-weight: 700;
+}
+
+/* Status-Badge */
+.oeffnungszeiten-tabelle .badge {
+    display: inline-block;
+    font-size: 0.7rem;
+    padding: 2px 8px;
+    border-radius: 2px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+.badge.offen {
+    background-color: rgba(57, 255, 20, 0.12);
+    color: var(--neon-green);
+    border: 1px solid var(--neon-green-dark);
+}
+.badge.geschlossen {
+    background-color: rgba(100, 100, 100, 0.1);
+    color: #555555;
+    border: 1px solid #333333;
+}
+
+/* ===== FOOTER BOTTOM BAR ===== */
+.footer-bottom {
+    background-color: var(--black);
+    border-top: 1px solid var(--black-border);
+    color: #444444;
+    text-align: center;
+    padding: 16px 40px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+}
+
+.footer-bottom span {
+    color: var(--neon-green-dark);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 700px) {
+    .footer {
+        grid-template-columns: 1fr;
+        padding: 32px 20px 16px;
+        gap: 24px;
+    }
+
+    .footer-bottom {
+        padding: 16px 20px;
+    }
+}

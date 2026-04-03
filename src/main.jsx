@@ -5,7 +5,7 @@ import App from './App.jsx'
 
 // WICHTIG: Der Import muss in geschweiften Klammern stehen,
 // da du "export function AuthProvider" (Named Export) nutzt.
-import { AuthProvider } from './AuthProvider'
+import { AuthProvider } from './Firebase/AuthProvider.jsx'
 
 createRoot(document.getElementById('root')).render(
     <StrictMode>

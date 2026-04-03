@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import { AuthContext } from "./AuthProvider";
-import { logout } from "./auth"; // Import your logout function
+import { AuthContext } from "./AuthProvider.jsx";
+import { logout } from "./auth.js"; // Import your logout function
 
 export default function UserStatus() {
     const { user } = useContext(AuthContext);

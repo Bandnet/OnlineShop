@@ -1,0 +1,197 @@
+.detail-page {
+    background-color: #000;
+    min-height: 100vh;
+    padding: 32px;
+    font-family: 'Courier New', Courier, monospace;
+    color: #cccccc;
+}
+
+.detail-back {
+    background: transparent;
+    border: 1px solid #1a1a1a;
+    color: #555;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    padding: 8px 16px;
+    cursor: pointer;
+    border-radius: 2px;
+    margin-bottom: 36px;
+    transition: border-color 0.2s, color 0.2s;
+}
+
+.detail-back:hover {
+    border-color: #39ff14;
+    color: #39ff14;
+}
+
+.detail-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+@media (max-width: 750px) {
+    .detail-layout {
+        grid-template-columns: 1fr;
+        gap: 28px;
+    }
+    .detail-page {
+        padding: 20px;
+    }
+}
+
+.detail-bild-wrapper {
+    position: relative;
+    border: 1px solid #1a1a1a;
+    border-radius: 4px;
+    overflow: hidden;
+    aspect-ratio: 4 / 3;
+    background: #0a0a0a;
+}
+
+.detail-bild {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: brightness(0.9) saturate(0.95);
+}
+
+.item-card__badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    padding: 3px 10px;
+    border-radius: 2px;
+    text-transform: uppercase;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.badge--sale     { background: rgba(57,255,20,0.15);   color: #39ff14; border: 1px solid #006622; }
+.badge--occasion { background: rgba(255,170,0,0.15);   color: #ffaa00; border: 1px solid #664400; }
+.badge--gebraucht{ background: rgba(150,150,150,0.12); color: #aaaaaa; border: 1px solid #333; }
+
+.detail-infos {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.detail-name {
+    color: #39ff14;
+    font-size: 1.6rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin: 0;
+    line-height: 1.3;
+}
+
+.detail-preis {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: 0.08em;
+    margin: 0;
+}
+
+.detail-divider {
+    border: none;
+    border-top: 1px solid #1a1a1a;
+}
+
+.detail-beschreibung h2,
+.detail-tabelle-wrapper h2 {
+    color: #39ff14;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin: 0 0 10px 0;
+    font-weight: 700;
+}
+
+.detail-beschreibung p {
+    color: #888;
+    font-size: 0.88rem;
+    line-height: 1.9;
+    white-space: pre-line;
+    margin: 0;
+}
+
+.detail-tabelle {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+}
+
+.detail-tabelle tr {
+    border-bottom: 1px solid #111;
+}
+
+.detail-tabelle tr:last-child {
+    border-bottom: none;
+}
+
+.detail-tabelle__key {
+    color: #555;
+    padding: 8px 0;
+    width: 40%;
+    letter-spacing: 0.05em;
+}
+
+.detail-tabelle__val {
+    color: #cccccc;
+    padding: 8px 0;
+    font-weight: 600;
+}
+
+.detail-kaufen {
+    margin-top: 8px;
+    background: transparent;
+    border: 1px solid #39ff14;
+    color: #39ff14;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 14px 32px;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: background-color 0.2s, color 0.2s, box-shadow 0.2s;
+    width: 100%;
+}
+
+.detail-kaufen:hover {
+    background-color: #39ff14;
+    color: #000;
+    box-shadow: 0 0 24px rgba(57, 255, 20, 0.3);
+}
+
+.detail-not-found {
+    background: #000;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    font-family: 'Courier New', monospace;
+    color: #555;
+}
+
+.detail-not-found button {
+    background: transparent;
+    border: 1px solid #333;
+    color: #39ff14;
+    font-family: 'Courier New', monospace;
+    padding: 10px 24px;
+    cursor: pointer;
+    letter-spacing: 0.1em;
+}

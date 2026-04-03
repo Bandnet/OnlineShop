@@ -1,15 +1,17 @@
 import './App.css';
 import { HashRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import { useContext } from "react";
-import { AuthContext } from "./AuthProvider";
-import { logout } from "./auth";
+import { AuthContext } from "./Firebase/AuthProvider.jsx";
+import { logout } from "./Firebase/auth.js";
+import Footer from "./Footer.jsx";
 
-import HomePage from "./HomePage.jsx";
-import SalePage from "./SalePage.jsx";
-import { LoginPage } from "./LoginPage.jsx";
+import HomePage from "./ShoppingPages/HomePage.jsx";
+import SalePage from "./ShoppingPages/SalePage.jsx";
+import { LoginPage } from "./AuthPages/LoginPage.jsx";
 import CheckoutPage from "./CheckoutPage.jsx";
-import { RegisterPage }from "./RegisterPage.jsx"; // Achte auf korrekte Schreibweise
-import ProtectedRoute from "./ProtectedRoute.jsx";
+import { RegisterPage }from "./AuthPages/RegisterPage.jsx"; // Achte auf korrekte Schreibweise
+import ProtectedRoute from "./Firebase/ProtectedRoute.jsx";
+import ProduktDetailPage from "./ShoppingPages/ProduktDetailPage.jsx"
 
 function App() {
     const { user } = useContext(AuthContext);
@@ -39,12 +41,16 @@ function App() {
                     <Route path="/Sale" element={<SalePage />} />
                     <Route path="/Login" element={<LoginPage />} />
                     <Route path="/Register" element={<RegisterPage />} />
+                    <Route path="/produkt/:id" element={<ProduktDetailPage />} />
                     <Route path="/Checkout" element={
                         <ProtectedRoute>
                             <CheckoutPage />
                         </ProtectedRoute>
                     } />
                 </Routes>
+
+                <Footer/>
+
             </div>
         </Router>
     );
