@@ -1,19 +1,28 @@
 import { useContext } from "react";
 import { AuthContext } from "./AuthProvider.jsx";
-import { logout } from "./auth.js"; // Import your logout function
+import { logout } from "./auth.js";
+import "./UserStatus.css"; // Neue CSS-Datei importieren
 
 export default function UserStatus() {
     const { user } = useContext(AuthContext);
 
     return (
-        <div style={{ padding: "10px", border: "1px solid #ccc" }}>
+        <div className="user-status-container">
             {user ? (
-                <>
-                    <p>Logged in as: <strong>{user.email}</strong></p>
-                    <button onClick={logout}>Sign Out</button>
-                </>
+                <div className="user-logged-in">
+                    <div className="user-info">
+                        <span className="user-label">AUTH_USER:</span>
+                        <strong className="user-email">{user.email}</strong>
+                    </div>
+                    <button className="user-logout-btn" onClick={logout}>
+                        [LOGOUT]
+                    </button>
+                </div>
             ) : (
-                <p>You are <strong>not</strong> logged in.</p>
+                <div className="user-logged-out">
+                    <span className="status-dot"></span>
+                    <p>STATUS: <strong>OFFLINE</strong></p>
+                </div>
             )}
         </div>
     );

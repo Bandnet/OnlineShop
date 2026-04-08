@@ -1,3 +1,14 @@
+:root {
+    --neon-green: #39ff14;
+    --neon-green-dim: #00cc44;
+    --neon-green-dark: #006622;
+    --black: #000000;
+    --black-surface: #0a0a0a;
+    --black-card: #111111;
+    --black-border: #1a1a1a;
+    --text-muted: #888888;
+}
+
 /* ===== ITEM CARD COMPONENT ===== */
 
 .item-card {
@@ -152,13 +163,18 @@
 }
 
 /* ── Grid Layout ── */
+/* ===== GRID FÜR DESKTOP & TABLET ===== */
 .produkt-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    /* Hier setzen wir das Maximum auf 280px.
+       Das verhindert das "Breiter-Werden" auf der Sale-Page.
+    */
+    grid-template-columns: repeat(auto-fill, minmax(220px, 280px));
     gap: 24px;
     padding: 32px;
     background-color: var(--black);
     min-height: 100vh;
+    justify-content: center;
 }
 
 /* Responsive */

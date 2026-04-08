@@ -22,7 +22,9 @@ function ProduktDetailPage() {
         );
     }
 
-    const { name, preis, bild, badge, beschreibung, details } = produkt;
+    // Achtung: Ich habe hier "originalPreis" (mit zwei i) geschrieben,
+    // falls du es in deiner produkte.js so benannt hast.
+    const { name, preis, originalPreis, bild, badge, beschreibung, details } = produkt;
     const badgeInfo = badge ? BADGE_CONFIG[badge] : null;
 
     return (
@@ -36,16 +38,26 @@ function ProduktDetailPage() {
                     <img src={bild} alt={name} className="detail-bild" />
                     {badgeInfo && (
                         <span className={`item-card__badge ${badgeInfo.klasse}`}>
-              {badgeInfo.label}
-            </span>
+                            {badgeInfo.label}
+                        </span>
                     )}
                 </div>
 
                 <div className="detail-infos">
                     <h1 className="detail-name">{name}</h1>
-                    <p className="detail-preis">CHF {preis.toFixed(2)}</p>
+                    <div className="detail-preis-container">
+                        <p className={`detail-preis ${badge === "sale" && originalPreis ? "detail-preis--sale" : ""}`}>
+                            CHF {preis.toFixed(2)}
+                        </p>
+                        {badge === "sale" && originalPreis && (
+                            <span className="detail-preis--alt">
+                                CHF {originalPreis.toFixed(2)}
+                            </span>
+                        )}
 
-                    <div className="detail-divider" />
+                    </div>
+
+                    <div className="detail-divider"/>
 
                     <div className="detail-beschreibung">
                         <h2>Beschreibung</h2>

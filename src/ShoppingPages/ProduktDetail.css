@@ -1,30 +1,45 @@
+:root {
+    --neon-green: #39ff14;
+    --neon-green-dim: #00cc44;
+    --neon-green-dark: #006622;
+    --black: #000000;
+    --black-surface: #0a0a0a;
+    --black-card: #111111;
+    --black-border: #1a1a1a;
+    --text-muted: #888888;
+}
+
+/* ===== PRODUCT DETAIL PAGE ===== */
+
 .detail-page {
-    background-color: #000;
+    background-color: var(--black);
     min-height: 100vh;
     padding: 32px;
-    font-family: 'Courier New', Courier, monospace;
-    color: #cccccc;
+    font-family: var(--font-mono);
+    color: var(--text-main);
 }
 
 .detail-back {
     background: transparent;
-    border: 1px solid #1a1a1a;
-    color: #555;
-    font-family: 'Courier New', Courier, monospace;
+    border: 1px solid var(--black-border);
+    color: var(--text-label);
+    font-family: var(--font-mono);
     font-size: 0.8rem;
     letter-spacing: 0.12em;
     padding: 8px 16px;
     cursor: pointer;
     border-radius: 2px;
     margin-bottom: 36px;
-    transition: border-color 0.2s, color 0.2s;
+    transition: var(--transition);
 }
 
 .detail-back:hover {
-    border-color: #39ff14;
-    color: #39ff14;
+    border-color: var(--neon-green);
+    color: var(--neon-green);
+    box-shadow: 0 0 10px var(--neon-green-glow);
 }
 
+/* ── Layout ── */
 .detail-layout {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -43,13 +58,14 @@
     }
 }
 
+/* ── Media ── */
 .detail-bild-wrapper {
     position: relative;
-    border: 1px solid #1a1a1a;
-    border-radius: 4px;
+    border: 1px solid var(--black-border);
+    border-radius: var(--border-radius);
     overflow: hidden;
     aspect-ratio: 4 / 3;
-    background: #0a0a0a;
+    background: var(--black-surface);
 }
 
 .detail-bild {
@@ -60,23 +76,36 @@
     filter: brightness(0.9) saturate(0.95);
 }
 
-.item-card__badge {
-    position: absolute;
-    top: 12px;
-    left: 12px;
-    font-size: 0.65rem;
-    font-weight: 700;
-    letter-spacing: 0.18em;
-    padding: 3px 10px;
-    border-radius: 2px;
-    text-transform: uppercase;
-    font-family: 'Courier New', Courier, monospace;
+/* ── Preis-Sektion (NEU) ── */
+.detail-preis-container {
+    display: flex;
+    align-items: baseline;
+    gap: 15px;
+    margin-top: 5px;
 }
 
-.badge--sale     { background: rgba(57,255,20,0.15);   color: #39ff14; border: 1px solid #006622; }
-.badge--occasion { background: rgba(255,170,0,0.15);   color: #ffaa00; border: 1px solid #664400; }
-.badge--gebraucht{ background: rgba(150,150,150,0.12); color: #aaaaaa; border: 1px solid #333; }
+.detail-preis {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--neon-green);
+    letter-spacing: 0.08em;
+    margin: 0;
+}
 
+.detail-preis--sale {
+    color: var(--neon-red, #ff3131);
+    text-shadow: 0 0 15px rgba(255, 49, 49, 0.3);
+}
+
+.detail-preis--alt {
+    color: var(--text-dark);
+    text-decoration: line-through;
+    text-decoration-color: var(--neon-green-dark);
+    font-size: 1.1rem;
+    font-family: var(--font-mono);
+}
+
+/* ── Infos & Beschreibung ── */
 .detail-infos {
     display: flex;
     flex-direction: column;
@@ -84,46 +113,42 @@
 }
 
 .detail-name {
-    color: #39ff14;
-    font-size: 1.6rem;
+    color: var(--neon-green);
+    font-size: 1.8rem;
     font-weight: 700;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     margin: 0;
-    line-height: 1.3;
-}
-
-.detail-preis {
-    font-size: 1.4rem;
-    font-weight: 700;
-    color: #ffffff;
-    letter-spacing: 0.08em;
-    margin: 0;
+    line-height: 1.2;
+    text-shadow: 0 0 10px var(--neon-green-glow);
 }
 
 .detail-divider {
     border: none;
-    border-top: 1px solid #1a1a1a;
+    border-top: 1px solid var(--black-border);
 }
 
 .detail-beschreibung h2,
 .detail-tabelle-wrapper h2 {
-    color: #39ff14;
-    font-size: 0.7rem;
+    color: var(--neon-green-dim);
+    font-size: 0.75rem;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    margin: 0 0 10px 0;
+    margin: 0 0 12px 0;
     font-weight: 700;
+    border-left: 2px solid var(--neon-green-dark);
+    padding-left: 10px;
 }
 
 .detail-beschreibung p {
-    color: #888;
-    font-size: 0.88rem;
-    line-height: 1.9;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    line-height: 1.8;
     white-space: pre-line;
     margin: 0;
 }
 
+/* ── Tabelle ── */
 .detail-tabelle {
     width: 100%;
     border-collapse: collapse;
@@ -131,67 +156,72 @@
 }
 
 .detail-tabelle tr {
-    border-bottom: 1px solid #111;
-}
-
-.detail-tabelle tr:last-child {
-    border-bottom: none;
+    border-bottom: 1px solid var(--black-card);
 }
 
 .detail-tabelle__key {
-    color: #555;
-    padding: 8px 0;
+    color: var(--text-label);
+    padding: 10px 0;
     width: 40%;
     letter-spacing: 0.05em;
+    text-transform: uppercase;
+    font-size: 0.7rem;
 }
 
 .detail-tabelle__val {
-    color: #cccccc;
-    padding: 8px 0;
+    color: var(--text-main);
+    padding: 10px 0;
     font-weight: 600;
 }
 
+/* ── Action Button ── */
 .detail-kaufen {
-    margin-top: 8px;
+    margin-top: 12px;
     background: transparent;
-    border: 1px solid #39ff14;
-    color: #39ff14;
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 0.85rem;
+    border: 1px solid var(--neon-green);
+    color: var(--neon-green);
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
     font-weight: 700;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    padding: 14px 32px;
+    padding: 16px 32px;
     cursor: pointer;
     border-radius: 2px;
-    transition: background-color 0.2s, color 0.2s, box-shadow 0.2s;
+    transition: var(--transition);
     width: 100%;
 }
 
 .detail-kaufen:hover {
-    background-color: #39ff14;
-    color: #000;
-    box-shadow: 0 0 24px rgba(57, 255, 20, 0.3);
+    background-color: var(--neon-green);
+    color: var(--black);
+    box-shadow: 0 0 24px var(--neon-green-glow);
 }
 
+/* ── Status-Meldungen ── */
 .detail-not-found {
-    background: #000;
+    background: var(--black);
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 20px;
-    font-family: 'Courier New', monospace;
-    color: #555;
+    font-family: var(--font-mono);
+    color: var(--text-label);
 }
 
 .detail-not-found button {
     background: transparent;
-    border: 1px solid #333;
-    color: #39ff14;
-    font-family: 'Courier New', monospace;
+    border: 1px solid var(--black-border);
+    color: var(--neon-green);
+    font-family: var(--font-mono);
     padding: 10px 24px;
     cursor: pointer;
     letter-spacing: 0.1em;
+    transition: var(--transition);
+}
+
+.detail-not-found button:hover {
+    border-color: var(--neon-green);
 }

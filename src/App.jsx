@@ -22,7 +22,9 @@ function App() {
             <div>
                 <div className="Navigation">
 
-                    <h2>Online Shop</h2>
+                    <nav>
+                        <Link to="/"><h2>Online Shop</h2></Link>
+                    </nav>
 
                     <nav>
                         <Link to="/">Home</Link>  <Link to="/Sale">Sale</Link>  <Link to="/Occasion">Occasion</Link>

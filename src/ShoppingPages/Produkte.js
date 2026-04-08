@@ -36,7 +36,8 @@ export const produkte = [
         id: "fanatec-csl-dd",
         name: "Fanatec CSL DD Base",
         preis: 399.00,
-        bild: "https://images.unsplash.com/photo-1606813907291-d86efa9b94db?w=600&q=80",
+        originalPreis: 529.00,
+        bild: "https://images.unsplash.com/photo-1612198188060-c7c2a3b66eae?w=600&q=80",
         badge: "sale",
         beschreibung: `Direktantrieb Wheelbase mit hoher Präzision und starkem Force Feedback.`,
         details: {
@@ -50,7 +51,7 @@ export const produkte = [
         name: "Thrustmaster T300RS",
         preis: 299.00,
         originalPreis: 400.00,
-        bild: "https://images.unsplash.com/photo-1598550476439-6847785fcea6?w=600&q=80",
+        bild: "https://images.unsplash.com/photo-1618478594486-c65b899c4936?w=600&q=80",
         badge: "sale",
         beschreibung: `Beliebtes Force Feedback Lenkrad für Einsteiger und Fortgeschrittene.`,
         details: {
@@ -62,7 +63,8 @@ export const produkte = [
         id: "logitech-g923",
         name: "Logitech G923 Wheel",
         preis: 349.00,
-        bild: "https://images.unsplash.com/photo-1587202372775-989f2c9b5c2b?w=600&q=80",
+        originalPreis: 449.00,
+        bild: "https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?w=600&q=80",
         badge: "sale",
         beschreibung: `TRUEFORCE Feedback-Technologie für realistischeres Fahrgefühl.`,
         details: {
@@ -74,7 +76,8 @@ export const produkte = [
         id: "fanatec-pedale",
         name: "Fanatec CSL Pedale",
         preis: 129.00,
-        bild: "https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=600&q=80",
+        originalPreis: 179.00,
+        bild: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80",
         badge: "sale",
         beschreibung: `Hochwertige Metallpedale mit Upgrade-Möglichkeiten.`,
         details: {
@@ -86,7 +89,8 @@ export const produkte = [
         id: "sim-seat-basic",
         name: "Sim Racing Sitz Basic",
         preis: 199.00,
-        bild: "https://images.unsplash.com/photo-1592841200221-3a36d59d0b46?w=600&q=80",
+        originalPreis: 269.00,
+        bild: "https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=600&q=80",
         badge: "sale",
         beschreibung: `Ergonomischer Sitz für lange Rennsessions.`,
         details: {
@@ -98,7 +102,8 @@ export const produkte = [
         id: "wheel-gt-style",
         name: "GT Style Lenkrad",
         preis: 149.00,
-        bild: "https://images.unsplash.com/photo-1558980394-0f5c8c85b3c7?w=600&q=80",
+        originalPreis: 199.00,
+        bild: "https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=600&q=80",
         badge: "sale",
         beschreibung: `GT-inspiriertes Racing Wheel mit Grip-Bezug.`,
         details: {
@@ -109,7 +114,7 @@ export const produkte = [
         id: "monitor-mount",
         name: "Triple Monitor Halterung",
         preis: 179.00,
-        bild: "https://images.unsplash.com/photo-1587206668289-24e66d68e0d9?w=600&q=80",
+        bild: "https://images.unsplash.com/photo-1547082299-de196ea013d6?w=600&q=80",
         badge: "sale",
         beschreibung: `Stabile Halterung für 3 Monitore im Simrig.`,
         details: {
@@ -120,7 +125,7 @@ export const produkte = [
         id: "handbremse-usb",
         name: "USB Handbremse",
         preis: 89.00,
-        bild: "https://images.unsplash.com/photo-1603791440384-56cd371ee9a7?w=600&q=80",
+        bild: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=600&q=80",
         badge: "sale",
         beschreibung: `Perfekt für Drift-Setups.`,
         details: {
@@ -131,7 +136,8 @@ export const produkte = [
         id: "shifter-hpattern",
         name: "H-Pattern Shifter",
         preis: 119.00,
-        bild: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=600&q=80",
+        originalPreis: 159.00,
+        bild: "https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=600&q=80",
         badge: "sale",
         beschreibung: `Manuelle Schaltung für realistisches Fahren.`,
         details: {
@@ -142,7 +148,8 @@ export const produkte = [
         id: "sim-rig-frame",
         name: "Sim Rig Frame",
         preis: 299.00,
-        bild: "https://images.unsplash.com/photo-1612197529197-0c5c3f5a9d9f?w=600&q=80",
+        originalPreis: 399.00,
+        bild: "https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?w=600&q=80",
         badge: "sale",
         beschreibung: `Stabiles Aluminiumprofil-Rig.`,
         details: {
@@ -157,7 +164,7 @@ export const produkte = [
         id: "fanatec-clubsport-v2",
         name: "Fanatec Clubsport V2",
         preis: 450.00,
-        bild: "https://images.unsplash.com/photo-1606813907291-d86efa9b94db?w=600&q=80",
+        bild: "https://images.unsplash.com/photo-1612198188060-c7c2a3b66eae?w=600&q=80",
         badge: "occasion",
         beschreibung: `High-End Base mit starkem Feedback.`,
         details: {
@@ -168,7 +175,7 @@ export const produkte = [
         id: "thrustmaster-tmx",
         name: "Thrustmaster TMX",
         preis: 150.00,
-        bild: "https://images.unsplash.com/photo-1598550476439-6847785fcea6?w=600&q=80",
+        bild: "https://images.unsplash.com/photo-1618478594486-c65b899c4936?w=600&q=80",
         badge: "occasion",
         beschreibung: `Einsteiger Wheel mit solider Leistung.`,
         details: {
@@ -179,7 +186,7 @@ export const produkte = [
         id: "logitech-g29-used",
         name: "Logitech G29",
         preis: 180.00,
-        bild: "https://images.unsplash.com/photo-1587202372775-989f2c9b5c2b?w=600&q=80",
+        bild: "https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?w=600&q=80",
         badge: "occasion",
         beschreibung: `Bewährtes Wheel für PlayStation/PC.`,
         details: {
@@ -190,7 +197,7 @@ export const produkte = [
         id: "pedale-loadcell",
         name: "Loadcell Pedale",
         preis: 220.00,
-        bild: "https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=600&q=80",
+        bild: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80",
         badge: "occasion",
         beschreibung: `Realistisches Bremsgefühl durch Loadcell.`,
         details: {
@@ -201,7 +208,7 @@ export const produkte = [
         id: "sim-seat-used",
         name: "Sim Sitz gebraucht",
         preis: 120.00,
-        bild: "https://images.unsplash.com/photo-1592841200221-3a36d59d0b46?w=600&q=80",
+        bild: "https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=600&q=80",
         badge: "occasion",
         beschreibung: `Bequemer Sitz mit leichten Gebrauchsspuren.`,
         details: {
@@ -212,7 +219,7 @@ export const produkte = [
         id: "wheel-f1-style",
         name: "F1 Style Wheel",
         preis: 300.00,
-        bild: "https://images.unsplash.com/photo-1558980394-0f5c8c85b3c7?w=600&q=80",
+        bild: "https://images.unsplash.com/photo-1541348263662-e068662d82af?w=600&q=80",
         badge: "occasion",
         beschreibung: `Formel-Style Lenkrad mit vielen Buttons.`,
         details: {
@@ -223,7 +230,7 @@ export const produkte = [
         id: "rig-alu-used",
         name: "Alu Rig gebraucht",
         preis: 250.00,
-        bild: "https://images.unsplash.com/photo-1612197529197-0c5c3f5a9d9f?w=600&q=80",
+        bild: "https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?w=600&q=80",
         badge: "occasion",
         beschreibung: `Stabiles Rig, bereits aufgebaut.`,
         details: {
@@ -234,7 +241,7 @@ export const produkte = [
         id: "monitor-stand-used",
         name: "Monitor Stand gebraucht",
         preis: 90.00,
-        bild: "https://images.unsplash.com/photo-1587206668289-24e66d68e0d9?w=600&q=80",
+        bild: "https://images.unsplash.com/photo-1547082299-de196ea013d6?w=600&q=80",
         badge: "occasion",
         beschreibung: `Single Monitor Halterung.`,
         details: {
@@ -245,7 +252,7 @@ export const produkte = [
         id: "handbremse-used",
         name: "Handbremse gebraucht",
         preis: 50.00,
-        bild: "https://images.unsplash.com/photo-1603791440384-56cd371ee9a7?w=600&q=80",
+        bild: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=600&q=80",
         badge: "occasion",
         beschreibung: `Funktioniert einwandfrei.`,
         details: {
@@ -256,7 +263,7 @@ export const produkte = [
         id: "shifter-used",
         name: "Shifter gebraucht",
         preis: 70.00,
-        bild: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=600&q=80",
+        bild: "https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=600&q=80",
         badge: "occasion",
         beschreibung: `Solider H-Shifter.`,
         details: {
@@ -271,7 +278,7 @@ export const produkte = [
         id: "sim-gloves",
         name: "Sim Racing Handschuhe",
         preis: 29.90,
-        bild: "https://images.unsplash.com/photo-1520975922323-7c1c6b5cba6d?w=600&q=80",
+        bild: "https://images.unsplash.com/photo-1603122630570-a0c3fa3c4d3c?w=600&q=80",
         badge: null,
         beschreibung: `Verbesserter Grip am Lenkrad.`,
         details: {
@@ -282,7 +289,7 @@ export const produkte = [
         id: "wheel-stand",
         name: "Wheel Stand",
         preis: 99.00,
-        bild: "https://images.unsplash.com/photo-1587206668289-24e66d68e0d9?w=600&q=80",
+        bild: "https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?w=600&q=80",
         badge: null,
         beschreibung: `Klappbarer Wheel Stand.`,
         details: {
@@ -293,7 +300,7 @@ export const produkte = [
         id: "button-box",
         name: "Button Box",
         preis: 79.00,
-        bild: "https://images.unsplash.com/photo-1603791440384-56cd371ee9a7?w=600&q=80",
+        bild: "https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?w=600&q=80",
         badge: null,
         beschreibung: `Zusätzliche Controls fürs Rig.`,
         details: {
@@ -304,7 +311,7 @@ export const produkte = [
         id: "sim-dashboard",
         name: "Sim Dashboard Display",
         preis: 89.00,
-        bild: "https://images.unsplash.com/photo-1587202372775-989f2c9b5c2b?w=600&q=80",
+        bild: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80",
         badge: null,
         beschreibung: `Zeigt Telemetriedaten live an.`,
         details: {
@@ -315,7 +322,7 @@ export const produkte = [
         id: "vr-headset",
         name: "VR Headset",
         preis: 399.00,
-        bild: "https://images.unsplash.com/photo-1581091012184-7f5b9d74dba5?w=600&q=80",
+        bild: "https://images.unsplash.com/photo-1622979135225-d2ba269cf1ac?w=600&q=80",
         badge: null,
         beschreibung: `Immersives Racing Erlebnis.`,
         details: {
@@ -326,7 +333,7 @@ export const produkte = [
         id: "seat-slider",
         name: "Seat Slider",
         preis: 49.00,
-        bild: "https://images.unsplash.com/photo-1592841200221-3a36d59d0b46?w=600&q=80",
+        bild: "https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=600&q=80",
         badge: null,
         beschreibung: `Verstellbare Sitzschiene.`,
         details: {
@@ -337,7 +344,7 @@ export const produkte = [
         id: "pedal-plate",
         name: "Pedal Plate",
         preis: 59.00,
-        bild: "https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=600&q=80",
+        bild: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80",
         badge: null,
         beschreibung: `Stabile Pedalhalterung.`,
         details: {
@@ -348,7 +355,7 @@ export const produkte = [
         id: "wheel-adapter",
         name: "Wheel Adapter",
         preis: 39.00,
-        bild: "https://images.unsplash.com/photo-1558980394-0f5c8c85b3c7?w=600&q=80",
+        bild: "https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=600&q=80",
         badge: null,
         beschreibung: `Adapter für verschiedene Wheels.`,
         details: {
@@ -359,7 +366,7 @@ export const produkte = [
         id: "bass-shaker",
         name: "Bass Shaker",
         preis: 120.00,
-        bild: "https://images.unsplash.com/photo-1612197529197-0c5c3f5a9d9f?w=600&q=80",
+        bild: "https://images.unsplash.com/photo-1545454675-3531b543be5d?w=600&q=80",
         badge: null,
         beschreibung: `Vibrationen für realistisches Feedback.`,
         details: {
@@ -370,7 +377,7 @@ export const produkte = [
         id: "cable-kit",
         name: "Cable Management Kit",
         preis: 19.90,
-        bild: "https://images.unsplash.com/photo-1606813907291-d86efa9b94db?w=600&q=80",
+        bild: "https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=600&q=80",
         badge: null,
         beschreibung: `Sauberes Kabelmanagement fürs Rig.`,
         details: {

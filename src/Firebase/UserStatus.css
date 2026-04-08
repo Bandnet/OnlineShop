@@ -1,0 +1,99 @@
+:root {
+    --neon-green: #39ff14;
+    --neon-green-dim: #00cc44;
+    --neon-green-dark: #006622;
+    --black: #000000;
+    --black-surface: #0a0a0a;
+    --black-card: #111111;
+    --black-border: #1a1a1a;
+    --text-muted: #888888;
+}
+
+.user-status-container {
+    padding: 12px 16px;
+    background-color: var(--black-card);
+    border: 1px solid var(--neon-green-dark);
+    border-radius: 2px;
+    font-family: var(--font-mono);
+    min-width: 250px;
+}
+
+/* Eingeloggter Zustand */
+.user-logged-in {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.user-label {
+    font-size: 0.6rem;
+    color: var(--text-label);
+    letter-spacing: 0.1em;
+}
+
+.user-email {
+    font-size: 0.85rem;
+    color: var(--neon-green-dim);
+    word-break: break-all;
+}
+
+/* Logout Button im Terminal-Style */
+.user-logout-btn {
+    background: transparent;
+    border: 1px solid var(--text-dark);
+    color: var(--text-dark);
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    padding: 4px 8px;
+    cursor: pointer;
+    transition: var(--transition);
+    text-transform: uppercase;
+}
+
+.user-logout-btn:hover {
+    border-color: var(--neon-red, #ff3131);
+    color: var(--neon-red, #ff3131);
+    box-shadow: 0 0 8px rgba(255, 49, 49, 0.2);
+}
+
+/* Ausgeloggter Zustand */
+.user-logged-out {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--text-dark);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    background-color: var(--text-dark);
+    border-radius: 50%;
+    display: inline-block;
+}
+
+/* Optional: Ein kleiner pulsierender Punkt wenn eingeloggt */
+.user-logged-in::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    background-color: var(--neon-green);
+    border-radius: 50%;
+    box-shadow: 0 0 5px var(--neon-green);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.4; }
+    100% { opacity: 1; }
+}
