@@ -1,6 +1,7 @@
 import React from "react"
 import { produkte } from "./Produkte.js";
 import ItemCard from "./ItemCard.jsx";
+import "./Page.css"
 
 function HomePage() {
     return (

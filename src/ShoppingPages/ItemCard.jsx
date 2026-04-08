@@ -4,12 +4,11 @@ import './ItemCard.css';
 const BADGE_CONFIG = {
     sale:      { label: "SALE",      klasse: "badge--sale" },
     occasion:  { label: "OCCASION",  klasse: "badge--occasion" },
-    gebraucht: { label: "GEBRAUCHT", klasse: "badge--gebraucht" },
 };
 
 function ItemCard({ produkt }) {
     const navigate = useNavigate();
-    const { id, name, preis, bild, badge } = produkt;
+    const { id, name, preis, originalPreis, bild, badge } = produkt;
     const badgeInfo = badge ? BADGE_CONFIG[badge] : null;
 
     return (
@@ -30,9 +29,19 @@ function ItemCard({ produkt }) {
 
             <div className="item-card__infos">
                 <h3 className="item-card__name">{name}</h3>
-                <p className="item-card__preis">
-                    CHF {preis.toFixed(2)}
-                </p>
+
+                <div className="item-card__preis-container"> {/* Container für korrektes CSS-Alignment */}
+                    <p className={`item-card__preis ${badge === "sale" && originalPreis ? "item-card__preis--sale" : ""}`}>
+                        CHF {preis.toFixed(2)}
+                    </p>
+
+                    {/* Korrektur: badge (mit d) und && statt Klammern */}
+                    {badge === "sale" && originalPreis && (
+                        <span className="item-card__preis--alt">
+                CHF {originalPreis.toFixed(2)}
+            </span>
+                    )}
+                </div>
             </div>
 
             <div className="item-card__hover-overlay">

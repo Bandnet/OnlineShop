@@ -1,26 +1,29 @@
+/* ===== ITEM CARD COMPONENT ===== */
+
 .item-card {
     position: relative;
-    background-color: #0a0a0a;
-    border: 1px solid #1a1a1a;
-    border-radius: 4px;
+    background-color: var(--black-surface);
+    border: 1px solid var(--black-border);
+    border-radius: var(--border-radius);
     overflow: hidden;
     cursor: pointer;
-    transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
-    font-family: 'Courier New', Courier, monospace;
+    transition: var(--transition);
+    font-family: var(--font-mono);
 }
 
 .item-card:hover {
-    border-color: #39ff14;
+    border-color: var(--neon-green);
     transform: translateY(-4px);
-    box-shadow: 0 8px 32px rgba(57, 255, 20, 0.15);
+    box-shadow: 0 8px 32px var(--neon-green-glow);
 }
 
+/* ── Bild Bereich ── */
 .item-card__bild-wrapper {
     position: relative;
     width: 100%;
     aspect-ratio: 4 / 3;
     overflow: hidden;
-    background-color: #111;
+    background-color: var(--black-card);
 }
 
 .item-card__bild {
@@ -29,14 +32,15 @@
     object-fit: cover;
     display: block;
     transition: transform 0.4s ease, filter 0.4s ease;
-    filter: brightness(0.85) saturate(0.9);
+    filter: brightness(0.8) saturate(0.8);
 }
 
 .item-card:hover .item-card__bild {
     transform: scale(1.05);
-    filter: brightness(1) saturate(1);
+    filter: brightness(1) saturate(1.1);
 }
 
+/* ── Badges ── */
 .item-card__badge {
     position: absolute;
     top: 10px;
@@ -47,35 +51,31 @@
     padding: 3px 10px;
     border-radius: 2px;
     text-transform: uppercase;
+    z-index: 2;
 }
 
 .badge--sale {
     background-color: rgba(57, 255, 20, 0.15);
-    color: #39ff14;
-    border: 1px solid #006622;
+    color: var(--neon-green);
+    border: 1px solid var(--neon-green-dark);
 }
 
 .badge--occasion {
     background-color: rgba(255, 170, 0, 0.15);
-    color: #ffaa00;
+    color: #ffaa00; /* Falls du hier noch keine Variable hast */
     border: 1px solid #664400;
 }
 
-.badge--gebraucht {
-    background-color: rgba(150, 150, 150, 0.12);
-    color: #aaaaaa;
-    border: 1px solid #333333;
-}
-
+/* ── Info Bereich ── */
 .item-card__infos {
     padding: 14px 16px 18px;
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 4px;
 }
 
 .item-card__name {
-    color: #cccccc;
+    color: var(--text-main);
     font-size: 0.9rem;
     font-weight: 600;
     letter-spacing: 0.05em;
@@ -87,23 +87,50 @@
 }
 
 .item-card:hover .item-card__name {
-    color: #39ff14;
+    color: var(--neon-green);
+}
+
+/* ── Preis System ── */
+.item-card__preis-container {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin-top: 4px;
 }
 
 .item-card__preis {
-    color: #39ff14;
-    font-size: 1.05rem;
+    color: var(--neon-green);
+    font-size: 1.1rem;
     font-weight: 700;
     letter-spacing: 0.08em;
     margin: 0;
+    text-shadow: 0 0 5px rgba(57, 255, 20, 0.2);
+}
+.item-card__preis--sale {
+    color: #ff5454;
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    margin: 0;
+    text-shadow: 0 0 5px rgba(57, 255, 20, 0.2);
+
 }
 
+.item-card__preis--alt {
+    color: var(--text-dark);
+    text-decoration: line-through;
+    text-decoration-color: var(--neon-green-dark);
+    font-size: 0.8rem;
+    font-weight: 400;
+}
+
+/* ── Hover Overlay ── */
 .item-card__hover-overlay {
     position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
-    background: linear-gradient(transparent, rgba(0, 0, 0, 0.85));
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
     padding: 24px 16px 14px;
     display: flex;
     align-items: flex-end;
@@ -113,29 +140,40 @@
 }
 
 .item-card__hover-overlay span {
-    color: #39ff14;
+    color: var(--neon-green);
     font-size: 0.75rem;
     letter-spacing: 0.15em;
     text-transform: uppercase;
+    font-weight: bold;
 }
 
 .item-card:hover .item-card__hover-overlay {
     opacity: 1;
 }
 
+/* ── Grid Layout ── */
 .produkt-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: 20px;
+    gap: 24px;
     padding: 32px;
-    background-color: #000;
+    background-color: var(--black);
     min-height: 100vh;
 }
 
+/* Responsive */
 @media (max-width: 480px) {
     .produkt-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 12px;
         padding: 16px;
+    }
+
+    .item-card__name {
+        font-size: 0.8rem;
+    }
+
+    .item-card__preis {
+        font-size: 0.95rem;
     }
 }
