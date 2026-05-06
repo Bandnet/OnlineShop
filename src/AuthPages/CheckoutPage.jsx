@@ -1,17 +1,25 @@
 import React from "react";
 import UserStatus from "../Firebase/UserStatus.jsx";
+import { useCart } from "./CartContext.jsx";
+import { useNavigate } from "react-router-dom";
 import "./CheckoutPage.css";
 
 function CheckoutPage() {
+    const { cartItems, removeFromCart, updateMenge, subtotal } = useCart();
+    const navigate = useNavigate();
+
+    const TAX_RATE = 0.081;
+    const tax = subtotal * TAX_RATE;
+    const total = subtotal + tax;
+
     return (
         <div className="checkout-page">
             <div className="checkout-container">
 
-                {/* Header Sektion */}
+                {/* Header */}
                 <header className="checkout-header">
                     <h1 className="checkout-title">TERMINAL_CHECKOUT</h1>
                     <div className="system-status">
-                        <UserStatus />
                         <span className="status-indicator">SECURE_CONNECTION: ACTIVE</span>
                     </div>
                 </header>
@@ -21,32 +29,71 @@ function CheckoutPage() {
                     {/* Linke Spalte: Order Manifest */}
                     <section className="checkout-section order-manifest">
                         <h2 className="section-title">01_ORDER_MANIFEST</h2>
-                        <div className="manifest-content">
-                            {/* Beispiel-Item (später über Props/Cart-State) */}
-                            <div className="manifest-item">
-                                <span className="item-id">#A88-01</span>
-                                <span className="item-name">Cyber Hoodie</span>
-                                <span className="item-price">CHF 45.00</span>
-                            </div>
 
-                            <div className="price-summary">
-                                <div className="summary-line">
-                                    <span>SUBTOTAL</span>
-                                    <span>CHF 45.00</span>
+                        <div className="manifest-content">
+                            {cartItems.length === 0 ? (
+                                <div className="manifest-empty">
+                                    <p>&gt; WARENKORB_LEER</p>
+                                    <button
+                                        className="execute-btn"
+                                        style={{ marginTop: "1rem" }}
+                                        onClick={() => navigate("/")}
+                                    >
+                                        ZURÜCK_ZUM_SHOP
+                                    </button>
                                 </div>
-                                <div className="summary-line">
-                                    <span>TAX_RATE (8.1%)</span>
-                                    <span>CHF 3.65</span>
-                                </div>
-                                <div className="summary-line total">
-                                    <span>TOTAL_CREDITS</span>
-                                    <span>CHF 48.65</span>
-                                </div>
-                            </div>
+                            ) : (
+                                <>
+                                    {cartItems.map((item, index) => (
+                                        <div className="manifest-item" key={item.id}>
+                                            <span className="item-id">{String(index + 1).padStart(3, "0")}</span>
+                                            <span className="item-name">{item.name}</span>
+
+                                            {/* Mengen-Steuerung */}
+                                            <div className="item-menge">
+                                                <button
+                                                    className="menge-btn"
+                                                    onClick={() => updateMenge(item.id, item.menge - 1)}
+                                                >−</button>
+                                                <span className="menge-zahl">{item.menge}</span>
+                                                <button
+                                                    className="menge-btn"
+                                                    onClick={() => updateMenge(item.id, item.menge + 1)}
+                                                >+</button>
+                                            </div>
+
+                                            <span className="item-price">
+                                                CHF {(item.preis * item.menge).toFixed(2)}
+                                            </span>
+
+                                            <button
+                                                className="item-remove"
+                                                onClick={() => removeFromCart(item.id)}
+                                                aria-label="Entfernen"
+                                            >✕</button>
+                                        </div>
+                                    ))}
+
+                                    <div className="price-summary">
+                                        <div className="summary-line">
+                                            <span>SUBTOTAL</span>
+                                            <span>CHF {subtotal.toFixed(2)}</span>
+                                        </div>
+                                        <div className="summary-line">
+                                            <span>TAX_RATE (8.1%)</span>
+                                            <span>CHF {tax.toFixed(2)}</span>
+                                        </div>
+                                        <div className="summary-line total">
+                                            <span>TOTAL_CREDITS</span>
+                                            <span>CHF {total.toFixed(2)}</span>
+                                        </div>
+                                    </div>
+                                </>
+                            )}
                         </div>
                     </section>
 
-                    {/* Rechte Spalte: Payment / Authorization */}
+                    {/* Rechte Spalte: Authorization */}
                     <section className="checkout-section payment-auth">
                         <h2 className="section-title">02_AUTHORIZATION</h2>
                         <div className="auth-form">
@@ -69,12 +116,15 @@ function CheckoutPage() {
                                 </div>
                             </div>
 
-                            <button className="execute-btn">
+                            <button
+                                className="execute-btn"
+                                disabled={cartItems.length === 0}
+                            >
                                 EXECUTE_TRANSACTION
                             </button>
                             <p className="security-note">
-                                > encryption: AES-256 active <br/>
-                                > bypass prevention: enabled
+                                &gt; encryption: AES-256 active <br />
+                                &gt; bypass prevention: enabled
                             </p>
                         </div>
                     </section>

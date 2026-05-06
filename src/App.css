@@ -72,6 +72,14 @@ body, html {
     background-color: rgba(57, 255, 20, 0.05);
 }
 
+/* Active Page Effect */
+.Navigation nav a.active {
+    color: var(--neon-green);
+    text-shadow: 0 0 8px var(--neon-green);
+    border: 3px solid var(--neon-green-dark);
+    background-color: rgba(57, 255, 20, 0.05);
+}
+
 /* Logout Button Style */
 .Navigation button {
     background: transparent;

@@ -1,5 +1,6 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { getProduktById } from './Produkte.js';
+import { useCart } from '../AuthPages/CartContext';
 import './ProduktDetail.css';
 
 const BADGE_CONFIG = {
@@ -11,6 +12,7 @@ const BADGE_CONFIG = {
 function ProduktDetailPage() {
     const { id } = useParams();
     const navigate = useNavigate();
+    const { addToCart } = useCart();
     const produkt = getProduktById(id);
 
     if (!produkt) {
@@ -22,8 +24,6 @@ function ProduktDetailPage() {
         );
     }
 
-    // Achtung: Ich habe hier "originalPreis" (mit zwei i) geschrieben,
-    // falls du es in deiner produkte.js so benannt hast.
     const { name, preis, originalPreis, bild, badge, beschreibung, details } = produkt;
     const badgeInfo = badge ? BADGE_CONFIG[badge] : null;
 
@@ -54,7 +54,6 @@ function ProduktDetailPage() {
                                 CHF {originalPreis.toFixed(2)}
                             </span>
                         )}
-
                     </div>
 
                     <div className="detail-divider"/>
@@ -80,7 +79,7 @@ function ProduktDetailPage() {
                         </div>
                     )}
 
-                    <button className="detail-kaufen">
+                    <button className="detail-kaufen" onClick={() => addToCart(produkt)}>
                         In den Warenkorb
                     </button>
                 </div>

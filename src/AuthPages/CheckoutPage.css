@@ -2,14 +2,23 @@
     --neon-green: #39ff14;
     --neon-green-dim: #00cc44;
     --neon-green-dark: #006622;
+    --neon-green-glow: rgba(57, 255, 20, 0.7);
+
     --black: #000000;
     --black-surface: #0a0a0a;
     --black-card: #111111;
     --black-border: #1a1a1a;
+
+    --text-main: #e0e0e0;
     --text-muted: #888888;
+    --text-dark: #777777;
+    --text-label: #aaaaaa;
+
+    --font-mono: monospace;
+    --transition: all 0.2s ease-in-out;
 }
 
-
+/* Base */
 .checkout-page {
     background-color: var(--black);
     min-height: 100vh;
@@ -23,7 +32,7 @@
     margin: 0 auto;
 }
 
-/* Header & System Status */
+/* Header */
 .checkout-header {
     border-bottom: 2px solid var(--neon-green-dark);
     margin-bottom: 40px;
@@ -48,7 +57,7 @@
     text-shadow: 0 0 5px var(--neon-green-glow);
 }
 
-/* Grid Layout */
+/* Grid */
 .checkout-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -71,17 +80,72 @@
     letter-spacing: 0.1em;
 }
 
-/* Manifest / Warenkorb Style */
+/* Manifest */
 .manifest-item {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 60px 1fr auto auto auto;
+    align-items: center;
+    gap: 10px;
     padding: 10px 0;
     border-bottom: 1px dashed var(--black-border);
     font-size: 0.9rem;
 }
 
-.item-id { color: var(--text-dark); }
+.item-id {
+    color: var(--text-dark);
+}
 
+.item-name {
+    color: var(--neon-green);
+}
+
+/* Menge Controls */
+.item-menge {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.menge-btn {
+    background: transparent;
+    border: 1px solid var(--black-border);
+    color: var(--neon-green);
+    padding: 4px 8px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.menge-btn:hover {
+    border-color: var(--neon-green);
+    box-shadow: 0 0 5px var(--neon-green-glow);
+}
+
+.menge-zahl {
+    min-width: 20px;
+    text-align: center;
+}
+
+/* Price + Remove */
+.item-price {
+    color: var(--neon-green);
+    min-width: 80px;
+    text-align: right;
+}
+
+.item-remove {
+    background: transparent;
+    border: none;
+    color: var(--text-dark);
+    cursor: pointer;
+    font-size: 1rem;
+    transition: var(--transition);
+}
+
+.item-remove:hover {
+    color: red;
+}
+
+/* Summary */
 .price-summary {
     margin-top: 30px;
     background: rgba(57, 255, 20, 0.03);
@@ -105,7 +169,13 @@
     font-size: 1.1rem;
 }
 
-/* Formular Style */
+/* Empty State */
+.manifest-empty {
+    text-align: center;
+    color: var(--text-muted);
+}
+
+/* Form */
 .input-group {
     margin-bottom: 15px;
     display: flex;
@@ -135,6 +205,10 @@
     transition: var(--transition);
 }
 
+.terminal-input::placeholder {
+    color: var(--text-dark);
+}
+
 .terminal-input:focus {
     border-color: var(--neon-green);
     box-shadow: 0 0 10px var(--neon-green-glow);
@@ -160,6 +234,13 @@
     box-shadow: 0 0 20px var(--neon-green-glow);
 }
 
+.execute-btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+/* Security Note */
 .security-note {
     font-size: 0.6rem;
     color: var(--text-dark);
@@ -169,5 +250,7 @@
 
 /* Responsive */
 @media (max-width: 850px) {
-    .checkout-grid { grid-template-columns: 1fr; }
+    .checkout-grid {
+        grid-template-columns: 1fr;
+    }
 }
