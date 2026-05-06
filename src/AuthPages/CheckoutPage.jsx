@@ -38,9 +38,9 @@ function CheckoutPage() {
 
                 {/* HEADER */}
                 <header className="checkout-header">
-                    <h1 className="checkout-title">TERMINAL_CHECKOUT</h1>
+                    <h1 className="checkout-title">TERMINAL CHECKOUT</h1>
                     <span className="status-indicator">
-                        SECURE_CONNECTION: ACTIVE
+                        SECURE CONNECTION: ACTIVE
                     </span>
                 </header>
 
@@ -48,16 +48,16 @@ function CheckoutPage() {
 
                     {/* LEFT: CART */}
                     <section className="checkout-section">
-                        <h2 className="section-title">01_ORDER_MANIFEST</h2>
+                        <h2 className="section-title">ORDER MANIFEST</h2>
 
                         {cartItems.length === 0 ? (
                             <div className="manifest-empty">
-                                <p>&gt; WARENKORB_LEER</p>
+                                <p>WARENKORB LEER</p>
                                 <button
                                     className="execute-btn"
                                     onClick={() => navigate("/")}
                                 >
-                                    ZURÜCK_ZUM_SHOP
+                                    ZURÜCK ZUM SHOP
                                 </button>
                             </div>
                         ) : (
@@ -129,7 +129,7 @@ function CheckoutPage() {
 
                     {/* RIGHT: FORM */}
                     <section className="checkout-section">
-                        <h2 className="section-title">02_AUTHORIZATION</h2>
+                        <h2 className="section-title">AUTHORIZATION</h2>
 
                         <div className="auth-form">
 
@@ -185,7 +185,7 @@ function CheckoutPage() {
                                 disabled={!isFormValid || cartItems.length === 0}
                                 onClick={handleCheckout}
                             >
-                                EXECUTE_TRANSACTION
+                                EXECUTE TRANSACTION
                             </button>
 
                             {!isFormValid && (
