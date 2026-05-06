@@ -2,8 +2,13 @@ import { createContext, useContext, useState } from "react";
 
 const CartContext = createContext(null);
 
+
+
 export function CartProvider({ children }) {
     const [cartItems, setCartItems] = useState([]);
+    const clearCart = () => {
+        setCartItems([]);
+    };
 
     function addToCart(produkt) {
         setCartItems(prev => {
@@ -43,7 +48,8 @@ export function CartProvider({ children }) {
             removeFromCart,
             updateMenge,
             totalItems,
-            subtotal
+            subtotal,
+            clearCart
         }}>
             {children}
         </CartContext.Provider>

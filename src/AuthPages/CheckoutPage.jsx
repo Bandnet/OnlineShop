@@ -1,131 +1,198 @@
 import React from "react";
-import UserStatus from "../Firebase/UserStatus.jsx";
 import { useCart } from "./CartContext.jsx";
 import { useNavigate } from "react-router-dom";
 import "./CheckoutPage.css";
 
 function CheckoutPage() {
-    const { cartItems, removeFromCart, updateMenge, subtotal } = useCart();
+    const { cartItems, removeFromCart, updateMenge, subtotal, clearCart } = useCart();
     const navigate = useNavigate();
 
+    const [form, setForm] = React.useState({
+        name: "",
+        card: "",
+        exp: "",
+        cvc: ""
+    });
+
     const TAX_RATE = 0.081;
-    const tax = subtotal * TAX_RATE;
-    const total = subtotal + tax;
+    const tax = Number((subtotal * TAX_RATE).toFixed(2));
+    const total = Number((subtotal + tax).toFixed(2));
+
+    // einfache Validierung
+    const isFormValid =
+        form.name.trim() !== "" &&
+        form.card.trim().length >= 16 &&
+        form.exp.trim() !== "" &&
+        form.cvc.trim().length >= 3;
+
+    function handleCheckout() {
+        if (!isFormValid || cartItems.length === 0) return;
+
+        clearCart();
+        navigate("/");
+    }
 
     return (
         <div className="checkout-page">
             <div className="checkout-container">
 
-                {/* Header */}
+                {/* HEADER */}
                 <header className="checkout-header">
                     <h1 className="checkout-title">TERMINAL_CHECKOUT</h1>
-                    <div className="system-status">
-                        <span className="status-indicator">SECURE_CONNECTION: ACTIVE</span>
-                    </div>
+                    <span className="status-indicator">
+                        SECURE_CONNECTION: ACTIVE
+                    </span>
                 </header>
 
                 <div className="checkout-grid">
 
-                    {/* Linke Spalte: Order Manifest */}
-                    <section className="checkout-section order-manifest">
+                    {/* LEFT: CART */}
+                    <section className="checkout-section">
                         <h2 className="section-title">01_ORDER_MANIFEST</h2>
 
-                        <div className="manifest-content">
-                            {cartItems.length === 0 ? (
-                                <div className="manifest-empty">
-                                    <p>&gt; WARENKORB_LEER</p>
-                                    <button
-                                        className="execute-btn"
-                                        style={{ marginTop: "1rem" }}
-                                        onClick={() => navigate("/")}
-                                    >
-                                        ZURÜCK_ZUM_SHOP
-                                    </button>
-                                </div>
-                            ) : (
-                                <>
-                                    {cartItems.map((item, index) => (
-                                        <div className="manifest-item" key={item.id}>
-                                            <span className="item-id">{String(index + 1).padStart(3, "0")}</span>
-                                            <span className="item-name">{item.name}</span>
+                        {cartItems.length === 0 ? (
+                            <div className="manifest-empty">
+                                <p>&gt; WARENKORB_LEER</p>
+                                <button
+                                    className="execute-btn"
+                                    onClick={() => navigate("/")}
+                                >
+                                    ZURÜCK_ZUM_SHOP
+                                </button>
+                            </div>
+                        ) : (
+                            <>
+                                {cartItems.map((item, index) => (
+                                    <div className="manifest-item" key={item.id}>
+                                        <span className="item-id">
+                                            {String(index + 1).padStart(3, "0")}
+                                        </span>
 
-                                            {/* Mengen-Steuerung */}
-                                            <div className="item-menge">
-                                                <button
-                                                    className="menge-btn"
-                                                    onClick={() => updateMenge(item.id, item.menge - 1)}
-                                                >−</button>
-                                                <span className="menge-zahl">{item.menge}</span>
-                                                <button
-                                                    className="menge-btn"
-                                                    onClick={() => updateMenge(item.id, item.menge + 1)}
-                                                >+</button>
-                                            </div>
+                                        <span className="item-name">
+                                            {item.name}
+                                        </span>
 
-                                            <span className="item-price">
-                                                CHF {(item.preis * item.menge).toFixed(2)}
-                                            </span>
+                                        <div className="item-menge">
+                                            <button
+                                                className="menge-btn"
+                                                onClick={() =>
+                                                    updateMenge(item.id, item.menge - 1)
+                                                }
+                                            >
+                                                −
+                                            </button>
+
+                                            <span>{item.menge}</span>
 
                                             <button
-                                                className="item-remove"
-                                                onClick={() => removeFromCart(item.id)}
-                                                aria-label="Entfernen"
-                                            >✕</button>
+                                                className="menge-btn"
+                                                onClick={() =>
+                                                    updateMenge(item.id, item.menge + 1)
+                                                }
+                                            >
+                                                +
+                                            </button>
                                         </div>
-                                    ))}
 
-                                    <div className="price-summary">
-                                        <div className="summary-line">
-                                            <span>SUBTOTAL</span>
-                                            <span>CHF {subtotal.toFixed(2)}</span>
-                                        </div>
-                                        <div className="summary-line">
-                                            <span>TAX_RATE (8.1%)</span>
-                                            <span>CHF {tax.toFixed(2)}</span>
-                                        </div>
-                                        <div className="summary-line total">
-                                            <span>TOTAL_CREDITS</span>
-                                            <span>CHF {total.toFixed(2)}</span>
-                                        </div>
+                                        <span className="item-price">
+                                            CHF {(item.preis * item.menge).toFixed(2)}
+                                        </span>
+
+                                        <button
+                                            className="item-remove"
+                                            onClick={() => removeFromCart(item.id)}
+                                        >
+                                            ✕
+                                        </button>
                                     </div>
-                                </>
-                            )}
-                        </div>
+                                ))}
+
+                                <div className="price-summary">
+                                    <div className="summary-line">
+                                        <span>SUBTOTAL</span>
+                                        <span>CHF {subtotal.toFixed(2)}</span>
+                                    </div>
+
+                                    <div className="summary-line">
+                                        <span>TAX</span>
+                                        <span>CHF {tax.toFixed(2)}</span>
+                                    </div>
+
+                                    <div className="summary-line total">
+                                        <span>TOTAL</span>
+                                        <span>CHF {total.toFixed(2)}</span>
+                                    </div>
+                                </div>
+                            </>
+                        )}
                     </section>
 
-                    {/* Rechte Spalte: Authorization */}
-                    <section className="checkout-section payment-auth">
+                    {/* RIGHT: FORM */}
+                    <section className="checkout-section">
                         <h2 className="section-title">02_AUTHORIZATION</h2>
+
                         <div className="auth-form">
+
                             <div className="input-group">
-                                <label>TARGET_NAME</label>
-                                <input type="text" placeholder="FULL NAME" className="terminal-input" />
+                                <label>NAME</label>
+                                <input
+                                    className="terminal-input"
+                                    value={form.name}
+                                    onChange={(e) =>
+                                        setForm({ ...form, name: e.target.value })
+                                    }
+                                />
                             </div>
+
                             <div className="input-group">
-                                <label>CREDIT_LINK_ID</label>
-                                <input type="text" placeholder="XXXX-XXXX-XXXX-XXXX" className="terminal-input" />
+                                <label>CARD NUMBER</label>
+                                <input
+                                    className="terminal-input"
+                                    value={form.card}
+                                    onChange={(e) =>
+                                        setForm({ ...form, card: e.target.value })
+                                    }
+                                />
                             </div>
+
                             <div className="input-row">
                                 <div className="input-group">
-                                    <label>EXP_DATE</label>
-                                    <input type="text" placeholder="MM/YY" className="terminal-input" />
+                                    <label>EXP</label>
+                                    <input
+                                        className="terminal-input"
+                                        value={form.exp}
+                                        onChange={(e) =>
+                                            setForm({ ...form, exp: e.target.value })
+                                        }
+                                    />
                                 </div>
+
                                 <div className="input-group">
-                                    <label>SEC_CODE</label>
-                                    <input type="password" placeholder="***" className="terminal-input" />
+                                    <label>CVC</label>
+                                    <input
+                                        type="password"
+                                        className="terminal-input"
+                                        value={form.cvc}
+                                        onChange={(e) =>
+                                            setForm({ ...form, cvc: e.target.value })
+                                        }
+                                    />
                                 </div>
                             </div>
 
                             <button
                                 className="execute-btn"
-                                disabled={cartItems.length === 0}
+                                disabled={!isFormValid || cartItems.length === 0}
+                                onClick={handleCheckout}
                             >
                                 EXECUTE_TRANSACTION
                             </button>
-                            <p className="security-note">
-                                &gt; encryption: AES-256 active <br />
-                                &gt; bypass prevention: enabled
-                            </p>
+
+                            {!isFormValid && (
+                                <p className="security-note">
+                                    &gt; ERROR: ALL FIELDS REQUIRED
+                                </p>
+                            )}
                         </div>
                     </section>
 
